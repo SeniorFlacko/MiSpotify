@@ -1,0 +1,8 @@
+<h1>Albumes</h1>
+<ul>
+{% for album in object_list %}
+    <li>{{ album.title }}</li>
+{% empty %}
+    <li>No albums yet.</li>
+{% endfor %}
+</ul>
