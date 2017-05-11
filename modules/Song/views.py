@@ -10,8 +10,12 @@ from django.urls import reverse_lazy
 from .models import Song
 
 class SongCreate(CreateView):
-    model = Song
-    fields = ['title']
+    class Meta:
+        model = Song
+        fields = ("__all__")
+
+#    model = Song
+#    fields = ('id','title', 'album', 'file_type')
 
 class SongUpdate(UpdateView):
     model = Song
