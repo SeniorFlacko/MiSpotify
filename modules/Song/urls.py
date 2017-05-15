@@ -4,7 +4,8 @@ from .views import (
                     SongUpdate, 
                     SongDelete,
                     SongDetailView,
-                    SongListView
+                    SongListView,
+                    manage_playlist,
                     )
  
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     url(r'^add/$', SongCreate.as_view(), name='song-add'),
     url(r'^(?P<pk>[0-9]+)/update$', SongUpdate.as_view(), name='song-update'),
     url(r'^(?P<pk>[0-9]+)/delete/$', SongDelete.as_view(), name='song-delete'),
+    url(r'^(?P<pk>[0-9]+)/manage/$', manage_playlist, name='song-manage'),
 ]

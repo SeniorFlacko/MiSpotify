@@ -4,8 +4,10 @@ from .views import (
                     AlbumUpdate, 
                     AlbumDelete,
                     AlbumDetailView,
-                    AlbumListView
+                    AlbumListView,
+                    manage_song
                     )
+ 
  
 urlpatterns = [
     url(r'^$', AlbumListView.as_view(), name='album-list'),
@@ -13,4 +15,5 @@ urlpatterns = [
     url(r'^add/$', AlbumCreate.as_view(), name='album-add'),
     url(r'^(?P<pk>[0-9]+)/update$', AlbumUpdate.as_view(), name='album-update'),
     url(r'^(?P<pk>[0-9]+)/delete/$', AlbumDelete.as_view(), name='album-delete'),
+    url(r'^(?P<pk>[0-9]+)/manage/$',manage_song, name='album-manage'),
 ]

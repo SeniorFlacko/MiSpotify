@@ -1,4 +1,4 @@
-"""mispotify URL Configuration
+"""MiSpotify URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-
+from modules.Accounts.views import login_view,logout_view,register_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^album/', include('modules.Album.urls', namespace='album')),
     url(r'^artist/', include('modules.Artist.urls', namespace='artist')),
-    url(r'^playlist/', include('modules.Playlist.urls', namespace='playlist')),
-    url(r'^user/', include('modules.User.urls', namespace='user')),
     url(r'^song/', include('modules.Song.urls', namespace='song')),
+    url(r'^playlist/', include('modules.Playlist.urls', namespace='playlist')),
+    #url(r'^user/', include('modules.User.urls', namespace='user')),
+    url(r'^login/',login_view,name='login'),
+    url(r'^logout/',logout_view,name='logout'),
+    url(r'^register/',register_view,name='register'),
 ]

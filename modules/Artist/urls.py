@@ -4,8 +4,10 @@ from .views import (
                     ArtistUpdate, 
                     ArtistDelete,
                     ArtistDetailView,
-                    ArtistListView
+                    ArtistListView,
+                    manage_albums,
                     )
+ 
  
 urlpatterns = [
     url(r'^$', ArtistListView.as_view(), name='artist-list'),
@@ -13,4 +15,6 @@ urlpatterns = [
     url(r'^add/$', ArtistCreate.as_view(), name='artist-add'),
     url(r'^(?P<pk>[0-9]+)/update$', ArtistUpdate.as_view(), name='artist-update'),
     url(r'^(?P<pk>[0-9]+)/delete/$', ArtistDelete.as_view(), name='artist-delete'),
+    url(r'^(?P<pk>[0-9]+)/manage/$', manage_albums, name='manage'),
+    
 ]

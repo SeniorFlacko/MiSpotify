@@ -1,9 +1,12 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.contrib import admin
 
 # Register your models here.
-from .models import Playlist
+from .models import Playlist_Song,Playlist
+class Playlist_SongInline(admin.TabularInline):
+    model = Playlist_Song
 
-admin.site.register(Playlist)
+class PlaylistAdmin(admin.ModelAdmin):
+    inlines = (Playlist_SongInline,)
+
+
+admin.site.register(Playlist,PlaylistAdmin)

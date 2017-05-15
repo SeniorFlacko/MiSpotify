@@ -1,8 +1,8 @@
-<h1>Albumes</h1>
+<h1>Playlists</h1>
 <ul>
-{% for album in object_list %}
-    <li>{{ album.title }}</li>
+{% for playlist in object_list %}
+    <li>{{ playlist.name }}</li>
 {% empty %}
-    <li>No albums yet.</li>
+    <li>No playlists yet.</li>
 {% endfor %}
 </ul>
