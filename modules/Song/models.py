@@ -13,3 +13,5 @@ class Song(models.Model):
     def get_absolute_url(self):
         return reverse('song:song-detail', kwargs={'pk': self.pk})
 
+class LP(models.Model):
+    title = models.CharField(max_length=120)

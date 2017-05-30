@@ -16,6 +16,26 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from modules.Accounts.views import login_view,logout_view,register_view
+import MiSpotify.api_urls as api_urls
+from modules.User.models import User
+from rest_framework import routers, serializers, viewsets
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^album/', include('modules.Album.urls', namespace='album')),
@@ -26,4 +46,6 @@ urlpatterns = [
     url(r'^login/',login_view,name='login'),
     url(r'^logout/',logout_view,name='logout'),
     url(r'^register/',register_view,name='register'),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/', include(api_urls)),
 ]
